@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:myapp/models/user.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -13,12 +15,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var jsonData;
+  static const usersData = 'assets/data/users.json';
+  var users = [];
 
   Future<void> loadJsonAsset() async {
-    final String jsonString = await rootBundle.loadString('assets/data/users.json');
-    final data = jsonDecode(jsonString);
-    print(data);
+    final String jsonString = await rootBundle.loadString(usersData);
+    final usersMap = jsonDecode(jsonString) as List<dynamic>;
+    setState(() {
+      users = usersMap.map((userMap) {
+        return User.fromJson(userMap);
+      }).toList();
+    });
   }
 
   @override
@@ -36,15 +43,18 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        margin: const EdgeInsets.all(12),
-        child: ListView(
-          children: const [
-            Card(
+        child: ListView.builder(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            final user = users[index];
+            return Card(
+              elevation: 0,
               child: ListTile(
-                title: Text("Demo"),
+                title: Text(user.toString()),
+                subtitle: Text(user.email),
               ),
-            )
-          ],
+            );
+          }
         ),
       )
     );
