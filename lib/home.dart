@@ -14,7 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String _label_use_existing_data = "Usar Datos del Registro";
+  final String _labelUseExistingData = "Usar Datos del Registro";
   int? _selectedIndex = 0;
   bool fillUserData = false;
 
@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.all(12),
+        margin: const EdgeInsets.all(12),
         child: ListView(
           children: [
             Column(
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(_label_use_existing_data),
+                    Text(_labelUseExistingData),
                     ToggleSwitch(
                       initialLabelIndex: _selectedIndex,
                       iconSize: 1,
