@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:toggle_switch/toggle_switch.dart';
+import 'dart:convert';
 
-import 'package:myapp/custom_form.dart';
-import 'package:myapp/utils/ui_helpers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,9 +13,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final String _labelUseExistingData = "Usar Datos del Registro";
-  int? _selectedIndex = 0;
-  bool fillUserData = false;
+  var jsonData;
+
+  Future<void> loadJsonAsset() async {
+    final String jsonString = await rootBundle.loadString('assets/data/users.json');
+    final data = jsonDecode(jsonString);
+    print(data);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadJsonAsset();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,33 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
         alignment: Alignment.center,
         margin: const EdgeInsets.all(12),
         child: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(_labelUseExistingData),
-                    ToggleSwitch(
-                      initialLabelIndex: _selectedIndex,
-                      iconSize: 1,
-                      fontSize: 14,
-                      minHeight: 30,
-                      minWidth: 40,
-                      labels: ['No', 'Sí'],
-                      inactiveBgColor: Colors.white,
-                      activeBgColor: [Colors.green],
-                      onToggle: (index) {
-                        setState(() => _selectedIndex = index);
-                      }                      
-                    )                    
-                  ],
-                ),
-                UIHelper.verticalSpaceMedium,
-                const CustomForm()
-              ],
+          children: const [
+            Card(
+              child: ListTile(
+                title: Text("Demo"),
+              ),
             )
           ],
         ),
