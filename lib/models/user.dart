@@ -15,4 +15,9 @@ class User {
         'lastName': lastName,
         'email': email,
       };
+
+  @override
+  String toString() {
+    return "$firstName $lastName";
+  }
 }
