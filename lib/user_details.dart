@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import 'package:myapp/custom_form.dart';
+import 'package:myapp/widgets/custom_form.dart';
 import 'package:myapp/utils/ui_helpers.dart';
 
 class ItemDetailsPage extends StatefulWidget {
