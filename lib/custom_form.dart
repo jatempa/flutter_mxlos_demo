@@ -14,7 +14,9 @@ class _CustomFormState extends State<CustomForm> {
   final _labelFirstName = "Nombre", _labelLastName = "Apellido";
   final _labelStreetName = "Calle", _labelNoInt = "No Interior";
   final _labelNoExt = "No Exterior", _labelZipCode = "CP";
-  String? _firstName, _lastName, _streetName, _noInt, _noExt, _zipCode;
+  final _labelEmail = "Email";
+  String? _firstName, _lastName, _streetName;
+  String? _noInt, _noExt, _zipCode, _email;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,16 @@ class _CustomFormState extends State<CustomForm> {
           onChanged: (value) => {
             setState(() {
               _lastName = value;
+            })
+          }
+        ),
+        UIHelper.verticalSpaceSmall,
+        buildTextFormField(
+          label: _labelEmail,
+          initialValue: _email,
+          onChanged: (value) => {
+            setState(() {
+              _email = value;
             })
           }
         ),
