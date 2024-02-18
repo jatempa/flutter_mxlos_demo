@@ -18,7 +18,7 @@ class UserListPage extends StatelessWidget {
           elevation: 0,
           child: ListTile(
             title: Text(user.toString()),
-            subtitle: Text(user.email),
+            subtitle: Text(user.email!),
             onTap: () {
               Navigator.push(
                 context,
