@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 import 'package:myapp/models/user.dart';
+import 'package:myapp/utils/ui_constants.dart';
 import 'package:myapp/utils/ui_helpers.dart';
 import 'package:myapp/widgets/custom_form.dart';
 
@@ -15,7 +16,6 @@ class UserDetailsPage extends StatefulWidget {
 }
 
 class _UserDetailsPageState extends State<UserDetailsPage> {
-  final String _labelUseExistingData = "Usar Datos del Registro";
   int? _selectedIndex = 0;
   bool fillUserData = false;
 
@@ -38,7 +38,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text(_labelUseExistingData),
+                    Text(labelUseExistingData),
                     ToggleSwitch(
                       initialLabelIndex: _selectedIndex,
                       iconSize: 1,
@@ -55,7 +55,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                   ],
                 ),
                 UIHelper.verticalSpaceMedium,
-                const CustomForm()
+                CustomForm(user: widget.user)
               ],
             )
           ],
