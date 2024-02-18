@@ -5,16 +5,22 @@ import 'package:myapp/user_details.dart';
 
 class UserListPage extends StatelessWidget {
   final List<User> users;
+  final Function updateUsers;
   
-  const UserListPage({super.key, required this.users});
+  const UserListPage({
+    super.key,
+    required this.users,
+    required this.updateUsers
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ReorderableListView.builder(
       itemCount: users.length,
       itemBuilder: (context, index) {
         final user = users[index];
         return Card(
+          key: ValueKey(user.id),
           color: Colors.transparent,
           elevation: 0,
           child: ListTile(
@@ -30,7 +36,10 @@ class UserListPage extends StatelessWidget {
             },
           ),
         );
-      }
-    );    
+      },
+      onReorder: ((oldIndex, newIndex) {
+        updateUsers(oldIndex, newIndex);
+      })
+    );
   }
 }

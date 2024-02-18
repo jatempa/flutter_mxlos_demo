@@ -38,6 +38,16 @@ class _MyHomePageState extends State<MyHomePage> {
     loadJsonAsset();
   }
 
+  void updateUsers(oldIndex, newIndex) {
+    setState(() {
+      if (oldIndex < newIndex) {
+        newIndex -= 1;
+      }
+      final User item = users.removeAt(oldIndex);
+      users.insert(newIndex, item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: UserListPage(users: users)
+        child: UserListPage(
+          users: users,
+          updateUsers: updateUsers
+        )
       )
     );
   }
