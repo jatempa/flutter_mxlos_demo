@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:myapp/models/user.dart';
 import 'package:myapp/utils/ui_constants.dart';
@@ -7,9 +8,10 @@ import 'package:myapp/widgets/base_text_form_field_widget.dart';
 
 class CustomForm extends StatefulWidget {
 
-  const CustomForm({super.key, required this.user});
+  const CustomForm({super.key, required this.user, required this.isEnabled});
 
   final User? user;
+  final bool isEnabled;
 
   @override
   State<CustomForm> createState() => _CustomFormState();
@@ -36,7 +38,16 @@ class _CustomFormState extends State<CustomForm> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.isEnabled) {
+      return buildUserForm(key: const ValueKey(2), isEnabled: true);
+    }
+
+    return buildUserForm(key: const ValueKey(1), isEnabled: false);
+  }
+
+  Widget buildUserForm({Key? key, bool isEnabled = false}) {
     return Column(
+      key: key,
       children: <Widget>[
         buildTextFormField(
           label: labelFirstName,
@@ -45,7 +56,8 @@ class _CustomFormState extends State<CustomForm> {
             setState(() {
               _firstName = value;
             })
-          }
+          },
+          isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
         buildTextFormField(
@@ -55,7 +67,8 @@ class _CustomFormState extends State<CustomForm> {
             setState(() {
               _lastName = value;
             })
-          }
+          },
+          isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
         buildTextFormField(
@@ -65,7 +78,8 @@ class _CustomFormState extends State<CustomForm> {
             setState(() {
               _email = value;
             })
-          }
+          },
+          isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
         buildTextFormField(
@@ -75,8 +89,9 @@ class _CustomFormState extends State<CustomForm> {
             setState(() {
               _streetName = value;
             })
-          }
-        ),        
+          },
+          isEnabled: isEnabled
+        ),
         UIHelper.verticalSpaceSmall,
         Row(
           children: <Widget>[
@@ -89,7 +104,8 @@ class _CustomFormState extends State<CustomForm> {
                   if(value !=null && value.length <= 6) {
                     setState(() => _noExt = value);
                   }
-                } 
+                },
+                isEnabled: isEnabled
               ),
             ),
             UIHelper.horizontalSpaceSmall,
@@ -102,7 +118,8 @@ class _CustomFormState extends State<CustomForm> {
                   if(value !=null && value.length <= 6) {
                     setState(() => _noInt = value);
                   }
-                } 
+                },
+                isEnabled: isEnabled
               ),
             ),
             UIHelper.horizontalSpaceSmall,
@@ -115,11 +132,12 @@ class _CustomFormState extends State<CustomForm> {
                   if(value !=null && value.length <= 5) {
                     setState(() => _zipCode = value);
                   }
-                } 
+                },
+                isEnabled: isEnabled
               ),
             ),
           ]
-        )       
+        ),
       ],
     );
   }
@@ -129,7 +147,8 @@ class _CustomFormState extends State<CustomForm> {
     String? label,
     Function? onChanged,
     TextInputType? keyboardType,
-    int? maxLength
+    int? maxLength,
+    bool isEnabled = false,
   }) {
     return BaseTextFormFieldWidget(
       initialValue: initialValue,
@@ -138,6 +157,7 @@ class _CustomFormState extends State<CustomForm> {
       label: label,
       onChanged: onChanged,
       maxLength: maxLength,
+      isEnabled: isEnabled,
     );
   }
 }

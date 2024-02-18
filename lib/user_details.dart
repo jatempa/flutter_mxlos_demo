@@ -17,7 +17,7 @@ class UserDetailsPage extends StatefulWidget {
 
 class _UserDetailsPageState extends State<UserDetailsPage> {
   int? _selectedIndex = 0;
-  bool fillUserData = false;
+  bool _isEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,13 +49,16 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                       inactiveBgColor: Colors.white,
                       activeBgColor: const [Colors.green],
                       onToggle: (index) {
-                        setState(() => _selectedIndex = index);
+                        setState(() {
+                          _selectedIndex = index;
+                          _isEnabled = _selectedIndex == 1;
+                        });
                       }                      
                     )                    
                   ],
                 ),
                 UIHelper.verticalSpaceMedium,
-                CustomForm(user: widget.user)
+                CustomForm(user: widget.user, isEnabled: _isEnabled)
               ],
             )
           ],
