@@ -2,16 +2,28 @@
   {
     "firstName": "Nash",
     "lastName": "Anderson",
-    "email": "Nash.Anderson59@gmail.com"
+    "email": "Nash.Anderson59@gmail.com",
+    "streetName": "Rice Forest",
+    "noInt": "153",
+    "noExt": "",
+    "zipCode": "77734"
   },
   {
     "firstName": "Rhett",
     "lastName": "Morissette",
-    "email": "Rhett86@hotmail.com"
+    "email": "Rhett86@hotmail.com",
+    "streetName": "Abigale Meadow",
+    "noInt": "",
+    "noExt": "478",
+    "zipCode": "72792"
   },
   {
     "firstName": "Camilla",
     "lastName": "Predovic",
-    "email": "Camilla.Predovic17@gmail.com"
+    "email": "Camilla.Predovic17@gmail.com",
+    "streetName": "Emery Glen",
+    "noInt": "12",
+    "noExt": "468",
+    "zipCode": "09121"
   }
 ]
