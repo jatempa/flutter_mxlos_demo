@@ -18,18 +18,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const usersData = 'assets/data/users.json';
+  static const users1Data = 'assets/data/users1.json';
+  static const users2Data = 'assets/data/users2.json';
   List<User> users = [];
+  var usersMap = [];
+  bool isRefresh = false;
 
   Future<void> loadJsonAsset() async {
-    final String jsonString = await rootBundle.loadString(usersData);
-    final usersMap = jsonDecode(jsonString) as List;
+    var jsonString = await rootBundle.loadString(users1Data);
+    usersMap = jsonDecode(jsonString) as List;
 
     setState(() {
       users = usersMap.map((userMap) {
         return User.fromJson(userMap);
       }).toList();
     });
+
+    jsonString = await rootBundle.loadString(users2Data);
+    usersMap = jsonDecode(jsonString) as List;
   }
 
   @override
@@ -84,9 +90,27 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: UserListPage(
-          users: users,
-          updateUsers: updateUsers
+        child: RefreshIndicator(
+          backgroundColor: Colors.white,
+          color: Colors.blue[800],
+          child: UserListPage(
+            users: users,
+            updateUsers: updateUsers
+          ),
+          onRefresh: () async {
+            if (isRefresh) {
+              return;
+            }
+
+            setState(() {
+              final tempUsers = usersMap.map((userMap) {
+                return User.fromJson(userMap);
+              }).toList();
+
+              users.addAll(tempUsers);
+              isRefresh = true;
+            });
+          },
         )
       )
     );
