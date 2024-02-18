@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:myapp/models/user.dart';
+import 'package:myapp/user_list.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -16,11 +17,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const usersData = 'assets/data/users.json';
-  var users = [];
+  List<User> users = [];
 
   Future<void> loadJsonAsset() async {
     final String jsonString = await rootBundle.loadString(usersData);
-    final usersMap = jsonDecode(jsonString) as List<dynamic>;
+    final usersMap = jsonDecode(jsonString) as List;
+
     setState(() {
       users = usersMap.map((userMap) {
         return User.fromJson(userMap);
@@ -43,19 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: ListView.builder(
-          itemCount: users.length,
-          itemBuilder: (context, index) {
-            final user = users[index];
-            return Card(
-              elevation: 0,
-              child: ListTile(
-                title: Text(user.toString()),
-                subtitle: Text(user.email),
-              ),
-            );
-          }
-        ),
+        child: UserListPage(users: users)
       )
     );
   }

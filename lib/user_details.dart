@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-import 'package:myapp/widgets/custom_form.dart';
+import 'package:myapp/models/user.dart';
 import 'package:myapp/utils/ui_helpers.dart';
+import 'package:myapp/widgets/custom_form.dart';
 
-class ItemDetailsPage extends StatefulWidget {
-  const ItemDetailsPage({super.key, required this.title});
+class UserDetailsPage extends StatefulWidget {
+  const UserDetailsPage({super.key, required this.user});
 
-  final String title;
+  final User user;
 
   @override
-  State<ItemDetailsPage> createState() => _ItemDetailsPageState();
+  State<UserDetailsPage> createState() => _UserDetailsPageState();
 }
 
-class _ItemDetailsPageState extends State<ItemDetailsPage> {
+class _UserDetailsPageState extends State<UserDetailsPage> {
   final String _labelUseExistingData = "Usar Datos del Registro";
   int? _selectedIndex = 0;
   bool fillUserData = false;
@@ -23,7 +24,7 @@ class _ItemDetailsPageState extends State<ItemDetailsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(widget.user.toString()),
       ),
       body: Container(
         alignment: Alignment.center,
