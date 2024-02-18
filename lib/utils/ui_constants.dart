@@ -6,3 +6,5 @@ const labelNoInt = "No Interior";
 const labelNoExt = "No Exterior";
 const labelZipCode = "CP";
 const labelEmail = "Email";
+const labelYes = "Sí";
+const labelNo = "No";

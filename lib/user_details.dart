@@ -36,14 +36,14 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(labelUseExistingData),
+                const Text(labelUseExistingData),
                 ToggleSwitch(
                   initialLabelIndex: _selectedIndex,
                   iconSize: 1,
                   fontSize: 14,
                   minHeight: 30,
                   minWidth: 40,
-                  labels: const ['No', 'Sí'],
+                  labels: const [labelNo, labelYes],
                   inactiveBgColor: Colors.white,
                   activeBgColor: const [Colors.green],
                   onToggle: (index) {
