@@ -29,40 +29,36 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
       body: Container(
         alignment: Alignment.center,
         margin: const EdgeInsets.all(12),
-        child: ListView(
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(labelUseExistingData),
-                    ToggleSwitch(
-                      initialLabelIndex: _selectedIndex,
-                      iconSize: 1,
-                      fontSize: 14,
-                      minHeight: 30,
-                      minWidth: 40,
-                      labels: const ['No', 'Sí'],
-                      inactiveBgColor: Colors.white,
-                      activeBgColor: const [Colors.green],
-                      onToggle: (index) {
-                        setState(() {
-                          _selectedIndex = index;
-                          _isEnabled = _selectedIndex == 1;
-                        });
-                      }                      
-                    )                    
-                  ],
-                ),
-                UIHelper.verticalSpaceMedium,
-                CustomForm(user: widget.user, isEnabled: _isEnabled)
+                Text(labelUseExistingData),
+                ToggleSwitch(
+                  initialLabelIndex: _selectedIndex,
+                  iconSize: 1,
+                  fontSize: 14,
+                  minHeight: 30,
+                  minWidth: 40,
+                  labels: const ['No', 'Sí'],
+                  inactiveBgColor: Colors.white,
+                  activeBgColor: const [Colors.green],
+                  onToggle: (index) {
+                    setState(() {
+                      _selectedIndex = index;
+                      _isEnabled = _selectedIndex == 1;
+                    });
+                  }
+                )
               ],
-            )
+            ),
+            UIHelper.verticalSpaceMedium,
+            CustomForm(user: widget.user, isEnabled: _isEnabled)
           ],
-        ),
+        )
       )
     );
   }
