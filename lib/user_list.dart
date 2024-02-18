@@ -15,6 +15,7 @@ class UserListPage extends StatelessWidget {
       itemBuilder: (context, index) {
         final user = users[index];
         return Card(
+          color: Colors.transparent,
           elevation: 0,
           child: ListTile(
             title: Text(user.toString()),
