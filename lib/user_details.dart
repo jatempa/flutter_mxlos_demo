@@ -22,9 +22,17 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.user.toString()),
+        backgroundColor: Colors.blue[800],
+        leading: const BackButton(color: Colors.white),
+        title: Text(
+          widget.user.toString(),
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          )
+        ),
       ),
       body: Container(
         alignment: Alignment.center,
