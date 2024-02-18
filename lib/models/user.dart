@@ -1,4 +1,5 @@
 class User {
+  final String? id;
   final String? firstName;
   final String? lastName;
   final String? email;
@@ -8,6 +9,7 @@ class User {
   final String? zipCode;
 
   User(
+    this.id,
     this.firstName,
     this.lastName,
     this.email,
@@ -18,7 +20,8 @@ class User {
   );
 
   User.fromJson(Map<String, dynamic> json)
-      : firstName = json['firstName'] != null
+      : id = json['id'],
+        firstName = json['firstName'] != null
           ? json['firstName'] as String
           : '',
         lastName = json['lastName'] != null
@@ -41,6 +44,7 @@ class User {
           : '';
 
   Map<String, dynamic> toJson() => {
+        'id': id,
         'firstName': firstName,
         'lastName': lastName,
         'email': email,
