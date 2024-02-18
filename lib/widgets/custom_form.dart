@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/utils/ui_constants.dart';
 import 'package:myapp/utils/ui_helpers.dart';
-import 'package:myapp/widgets/base_text_form_field_widget.dart';
+import 'package:myapp/widgets/custom_text_form_field_widget.dart';
 
 class CustomForm extends StatefulWidget {
 
@@ -39,17 +39,17 @@ class _CustomFormState extends State<CustomForm> {
   @override
   Widget build(BuildContext context) {
     if (widget.isEnabled) {
-      return buildUserForm(key: const ValueKey(2), isEnabled: true);
+      return buildUserForm(key: ValueKey(1), isEnabled: widget.isEnabled);
     }
 
-    return buildUserForm(key: const ValueKey(1), isEnabled: false);
+    return buildUserForm(key: ValueKey(2), isEnabled: widget.isEnabled);
   }
 
   Widget buildUserForm({Key? key, bool isEnabled = false}) {
     return Column(
       key: key,
       children: <Widget>[
-        buildTextFormField(
+        CustomTextFormFieldWidget(
           label: labelFirstName,
           initialValue: _firstName,
           onChanged: (value) => {
@@ -60,7 +60,7 @@ class _CustomFormState extends State<CustomForm> {
           isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
-        buildTextFormField(
+        CustomTextFormFieldWidget(
           label: labelLastName,
           initialValue: _lastName,
           onChanged: (value) => {
@@ -71,7 +71,7 @@ class _CustomFormState extends State<CustomForm> {
           isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
-        buildTextFormField(
+        CustomTextFormFieldWidget(
           label: labelEmail,
           initialValue: _email,
           onChanged: (value) => {
@@ -82,7 +82,7 @@ class _CustomFormState extends State<CustomForm> {
           isEnabled: isEnabled
         ),
         UIHelper.verticalSpaceSmall,
-        buildTextFormField(
+        CustomTextFormFieldWidget(
           label: labelStreetName,
           initialValue: _streetName,
           onChanged: (value) => {
@@ -96,7 +96,7 @@ class _CustomFormState extends State<CustomForm> {
         Row(
           children: <Widget>[
             Expanded(
-              child: buildTextFormField(
+              child: CustomTextFormFieldWidget(
                 label: labelNoExt,
                 initialValue: _noExt,
                 maxLength: 6,
@@ -110,7 +110,7 @@ class _CustomFormState extends State<CustomForm> {
             ),
             UIHelper.horizontalSpaceSmall,
             Expanded(
-              child: buildTextFormField(
+              child: CustomTextFormFieldWidget(
                 label: labelNoInt,
                 initialValue: _noInt,
                 maxLength: 6,
@@ -124,7 +124,7 @@ class _CustomFormState extends State<CustomForm> {
             ),
             UIHelper.horizontalSpaceSmall,
             Expanded(
-              child: buildTextFormField(
+              child: CustomTextFormFieldWidget(
                 label: labelZipCode,
                 initialValue: _zipCode,
                 maxLength: 5,
@@ -139,25 +139,6 @@ class _CustomFormState extends State<CustomForm> {
           ]
         ),
       ],
-    );
-  }
-
-  Widget buildTextFormField({
-    String? initialValue,
-    String? label,
-    Function? onChanged,
-    TextInputType? keyboardType,
-    int? maxLength,
-    bool isEnabled = false,
-  }) {
-    return BaseTextFormFieldWidget(
-      initialValue: initialValue,
-      border: const OutlineInputBorder(),
-      keyboardType: keyboardType,
-      label: label,
-      onChanged: onChanged,
-      maxLength: maxLength,
-      isEnabled: isEnabled,
     );
   }
 }
