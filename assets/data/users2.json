@@ -1,43 +1,13 @@
 [
   {
-    "id": "e53c61ce-965d-49ba-9d78-14e467da283d",
-    "firstName": "Nash",
-    "lastName": "Anderson",
-    "email": "Nash.Anderson59@gmail.com",
-    "streetName": "Rice Forest",
-    "noInt": "153",
-    "noExt": "",
-    "zipCode": "77734"
-  },
-  {
-    "id": "fbbca3c7-fdb0-48de-815b-94200f914c66",
-    "firstName": "Rhett",
-    "lastName": "Morissette",
-    "email": "Rhett86@hotmail.com",
-    "streetName": "Abigale Meadow",
-    "noInt": "",
-    "noExt": "478",
-    "zipCode": "72792"
-  },
-  {
-    "id": "11af9e94-5387-49fe-bacd-2a39958b9003",
-    "firstName": "Camilla",
-    "lastName": "Predovic",
-    "email": "Camilla.Predovic17@gmail.com",
-    "streetName": "Emery Glen",
-    "noInt": "12",
-    "noExt": "468",
-    "zipCode": "09121"
-  },
-  {
     "id": "8737a45d-1ac7-425e-9288-1a770d02f10d",
     "firstName": "Myrtle",
     "lastName": "Casper",
     "email": "Sydnie_Emmerich@hotmail.com",
     "streetName": "Volkman Junctions",
-    "noInt": "",
+    "noInt": "87",
     "noExt": "231",
-    "zipCode": "58690-7029"
+    "zipCode": "58690"
   },
   {
     "id": "1a9c58b5-c42a-49c0-a8d2-ebacec10d611",
@@ -45,9 +15,9 @@
     "lastName": "Lang",
     "email": "Judd5@yahoo.com",
     "streetName": "Tyrique Forest",
-    "noInt": "",
+    "noInt": "265",
     "noExt": "81",
-    "zipCode": "51801-7530"
+    "zipCode": "51801"
   },
   {
     "id": "c0211615-6c89-4003-90f6-32387efc27f9",
@@ -75,7 +45,7 @@
     "lastName": "Douglas",
     "email": "Kiana.Welch64@yahoo.com",
     "streetName": "Bridget Burg",
-    "noInt": "",
+    "noInt": "74",
     "noExt": "23",
     "zipCode": "24428"
   },
