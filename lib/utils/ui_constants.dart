@@ -1,4 +1,4 @@
-const labelUseExistingData = "Usar Datos del Registro";
+const labelUseExistingData = "¿Actualizar?";
 const labelFirstName = "Nombre";
 const labelLastName = "Apellido";
 const labelStreetName = "Calle";
