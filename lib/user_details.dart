@@ -41,33 +41,38 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(labelUseExistingData),
-                ToggleSwitch(
-                  initialLabelIndex: _selectedIndex,
-                  iconSize: 1,
-                  fontSize: 14,
-                  minHeight: 30,
-                  minWidth: 40,
-                  labels: const [labelNo, labelYes],
-                  inactiveBgColor: Colors.white,
-                  activeBgColor: const [Colors.green],
-                  onToggle: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                      _isEnabled = _selectedIndex == 1;
-                    });
-                  }
-                )
-              ],
-            ),
+            _buildHeader(),
             UIHelper.verticalSpaceMedium,
-            CustomForm(user: widget.user, isEnabled: _isEnabled)
+            CustomForm(user: widget.user, isEnabled: _isEnabled),
+
           ],
         )
       )
+    );
+  }
+
+  Widget _buildHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        const Text(labelUseExistingData),
+        ToggleSwitch(
+          initialLabelIndex: _selectedIndex,
+          iconSize: 1,
+          fontSize: 14,
+          minHeight: 30,
+          minWidth: 40,
+          labels: const [labelNo, labelYes],
+          inactiveBgColor: Colors.white,
+          activeBgColor: const [Colors.green],
+          onToggle: (index) {
+            setState(() {
+              _selectedIndex = index;
+              _isEnabled = _selectedIndex == 1;
+            });
+          }
+        )
+      ],
     );
   }
 }
