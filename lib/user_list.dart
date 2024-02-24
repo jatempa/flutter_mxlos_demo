@@ -19,27 +19,32 @@ class UserListPage extends StatelessWidget {
       itemCount: users.length,
       itemBuilder: (context, index) {
         final user = users[index];
-        return Card(
-          key: ValueKey(user.id),
-          color: Colors.transparent,
-          elevation: 0,
-          child: ListTile(
-            title: Text(user.toString()),
-            subtitle: Text(user.email!),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => UserDetailsPage(user: user),
-                ),
-              );
-            },
-          ),
-        );
+
+        return _buildCardItem(user, context);
       },
       onReorder: ((oldIndex, newIndex) {
         updateUsers(oldIndex, newIndex);
       })
+    );
+  }
+
+  Widget _buildCardItem(User user, BuildContext context) {
+    return Card(
+      key: ValueKey(user.id),
+      color: Colors.transparent,
+      elevation: 0,
+      child: ListTile(
+        title: Text(user.toString()),
+        subtitle: Text(user.email!),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UserDetailsPage(user: user),
+            ),
+          );
+        },
+      ),
     );
   }
 }
